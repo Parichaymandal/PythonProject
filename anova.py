@@ -5,18 +5,21 @@
 import numpy as np
 
 # Create fake month indicators for testing
+tot_animals = 4
+tot_months = 6
 np.random.seed(seed = 1234)
-month = np.repeat(np.arange(1,13,1), 10)
+month = np.repeat(np.arange(1,tot_months+1,1), tot_animals)
 
 # Create fake individual indicators for testing
 ind = []
-for i in range(1,13):
-    ind.append(list(range(1, 11)))
-ind = np.array(ind).flatten()    
+for i in range(1,tot_months+1):
+    ind.append(list(range(1, tot_animals+1)))
+ind = np.array(ind).flatten()
 
 # Create temperature data for testing
 temp = np.random.normal(size = len (month))
 
+# Function to carry out the analysis
 def repeated_measures_oneway_anova(y, x, i):
     """Function to compute repeated measures one-way ANOVA for a variably y 
     with groups x, in which each individual i is measures several times."""
@@ -36,35 +39,46 @@ def repeated_measures_oneway_anova(y, x, i):
     
     # Between sum of squares (SSB)
     mean_x = []
-    n_x = len(set(x))
+    n_i = len(set(i))
     for s in np.unique(x):
         tmp = y[np.where(x == s)]
         mean_x.append(np.mean(tmp))
-    SSB = np.sum(n_x * (mean_x-mean_all)**2)
+    SSB = np.sum(n_i * ((mean_x-mean_all)**2))
     print('SSB: '+ str(SSB))
         
     # Within sum of squares (SSW)
     mean_w = {}
-    for s in np.unique(i):
-        tmp = y[np.where(i == s)]
-        mean_w[s] = (np.mean(tmp))
+    for t in np.unique(x):
+        tmp = y[np.where(x == t)]
+        mean_w[t] = np.mean(tmp)
     ss_w = []
-    for r in range(y.shape[0]):
-         ss_w.append((y[r] - mean_w[i[r]])**2)
+    for u in range(y.shape[0]):
+        ss_w.append((y[u] - mean_w[x[u]])**2)
     SSW = np.sum(ss_w)    
     print('SSW: '+ str(SSW))
+        
+    # Subject sum of squares (SSS)
+    mean_i = []
+    n_x = len(set(x))
+    for v in np.unique(i):
+        tmp = y[np.where(i == v)]
+        mean_i.append(np.mean(tmp))
+    SSS = np.sum(n_x * ((mean_i-mean_all)**2))
+    print('SSS: '+ str(SSS))
     
-    # Subject variability (SSS)
-    
-    # Residual variability (RSS)
-    
-    # Checks
-    
+    # Error variability (SSE)
+    SSE = SSW - SSS 
+    print('SSR: '+ str(SSE))
+        
     # F statistic
+    MSB = SSB/(n_x-1)
+    MSE  = SSE/((n_x-1)*(n_i-1))
+    F = MSB/MSE
+    print('F: ' + str(F))
     
-    # Contrast
+    # Contrast (F distribution)
     
-    # Results
+    # Return results
 
 
 # Check function
