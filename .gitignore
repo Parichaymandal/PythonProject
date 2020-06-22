@@ -1,0 +1,10 @@
+#Shapefiles
+*.prj
+*.dbf
+*.fix
+*.pjr
+*.qix
+*.shp
+*.shx
+#mac
+.DS_Store
