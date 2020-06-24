@@ -21,7 +21,7 @@ def loadrast(path):
     return rlayer
  
 # uncomment below to call loadrast() function 
-loadrast(path)  
+# loadrast(path)  
 
 
 # define function to get general info from the raster
@@ -52,6 +52,6 @@ def getrastinfo(path):
     return searchband
 
 # uncomment below to call getrastinfo() function
-getrastinfo(path)
+# getrastinfo(path)
 
 
