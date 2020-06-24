@@ -2,7 +2,7 @@ import os
 import gdal 
 
 # place here your path to the multiband raster
-path = os.path.join('databases/raster/24MonthsStack.vrt')
+path = os.path.join('databases', 'raster', '24MonthsStack.vrt')
 
 
 # define function to load the raster 
