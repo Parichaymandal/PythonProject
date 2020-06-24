@@ -2,11 +2,19 @@ import os
 import gdal 
 
 # place here your path to the multiband raster
-path = os.path.join('C:\\', 'Users','Giulia','Desktop','raster_output','24MonthsStack.vrt')
+path = os.path.join('place your path here')
 
 
 # define function to load the raster 
 def loadrast(path):
+    
+    '''
+    Loads a raster with gdal
+    -----
+    Parameters:
+    Path -> string
+    '''
+    
     rlayer = gdal.Open(path)
     if not rlayer:
         print ('Layer failed to load! The path might be wrong')
@@ -20,6 +28,18 @@ def loadrast(path):
 
 # define function to get general info from the raster
 def getrastinfo(path):
+    
+    '''
+    calls loadrast() function and prints general information about the multiband raster
+    ----
+    Parameters:
+    path -> string
+    ----
+    Returns:
+    number of colums and rows;
+    for each band: band number, No Data Value, Minimum Value, Maximum Value
+    '''
+    
     # call the function to load the raster
     loadrast(path)
     # show 
