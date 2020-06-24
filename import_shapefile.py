@@ -1,7 +1,7 @@
 import os
 import ogr
 
-def importShapefile_ogr(path,geometry):
+def importShapefile(path,geometry):
     
         """Loads the shapefile depending on the desired geometry (lines or points)
 
