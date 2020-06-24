@@ -1,4 +1,4 @@
-# PythonProject
+# Shapefiles folder
 
 This folder should contain `points.shp` and `lines.shp` files of White-fronted goose trajectories (including `.dbf` `.fix` `.prj` `.qix` `.shp` and `.shx` files).
 
