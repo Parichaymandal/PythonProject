@@ -2,7 +2,7 @@ import os
 import gdal 
 
 # place here your path to the multiband raster
-path = os.path.join('C://', 'Users', 'Giulia', 'Desktop', 'tif_folder','stacked.vrt')
+path = os.path.join('Database','raster','stacked.vrt')
 
 
 # define function to load the raster 
