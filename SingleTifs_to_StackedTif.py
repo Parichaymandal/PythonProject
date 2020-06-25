@@ -2,7 +2,7 @@ import gdal
 import os
 
 # write here your path to the tifs folder
-tif_fold = os.path.join('C://', 'Users', 'Giulia', 'Desktop', 'tif_folder')
+tif_fold = os.path.join('databases','raster')
 
 def SingleTifToStacked(tif_fold):
     '''
