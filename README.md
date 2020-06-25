@@ -16,5 +16,5 @@
   - In the window that appears, go to the tab System
   - In that tab, go to the Environment section
   - Check the box "Use custom variables"
-  - Add a variable PYTHONPATH and as the value add the `path` where your modules are located (same as `project_folder` from requirement 1)
+  - Add a variable `PYTHONPATH` and as the value add the `path` where your modules are located (same as `project_folder` from requirement 1)
   - Restart QGIS
