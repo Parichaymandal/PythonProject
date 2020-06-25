@@ -1,10 +1,7 @@
 import os
 import gdal 
 
-# place here your path to the multiband raster
-path = os.path.join('databases', 'raster', 'raster.tif')
-
-# define function to load the raster 
+# define function to load a raster 
 def import_raster(path):
     
     '''
@@ -23,6 +20,7 @@ def import_raster(path):
     return rlayer
 
 # define function to get general info from the raster
+
 def get_raster_info(rlayer):
     
     '''
