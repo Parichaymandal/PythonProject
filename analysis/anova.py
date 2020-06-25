@@ -4,22 +4,6 @@
 
 import numpy as np
 
-# Create fake month indicators for testing
-tot_animals = 4
-tot_months = 6
-np.random.seed(seed = 1234)
-month = np.repeat(np.arange(1,tot_months+1,1), tot_animals)
-
-# Create fake individual indicators for testing
-ind = []
-for i in range(1,tot_months+1):
-    ind.append(list(range(1, tot_animals+1)))
-ind = np.array(ind).flatten()
-
-# Create temperature data for testing
-temp = np.random.normal(size = len (month))
-
-# Function to carry out the analysis
 def repeated_measures_oneway_anova(y, x, i):
     """Function to compute repeated measures one-way ANOVA for a variably y 
     with groups x, in which each individual i is measures several times."""
@@ -79,7 +63,3 @@ def repeated_measures_oneway_anova(y, x, i):
     # Contrast (F distribution)
     
     # Return results
-
-
-# Check function
-repeated_measures_oneway_anova(temp, month, ind)
