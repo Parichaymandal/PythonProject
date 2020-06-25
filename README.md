@@ -1,6 +1,20 @@
 # PythonProject
-This branch was created by Giulia; it contains 3 functions and 1 folder with 24 single band .tifs
 
-**SingleTifs_to_StackedTif.py** -> contains the function *SingleTifToStacked()* that takes in the single band .tifs and stack them. The first output is a .vrt file, the second one is a multiband .tif
+# Manual
 
-**Import_Raster.py** -> contains 2 functions: *loadrast()* and *getrastinfo()*. The fist one loads the multiband raster; the second one gets general information from it.
+#to do
+
+# Requirements
+
+1. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer.
+
+2. Run this code by using the QGIS python-IDE.
+
+3. This project use python modules and QGIS so it is requiered an additional configuration:
+
+  - In QGIS, go to Settings -> Options
+  - In the window that appears, go to the tab System
+  - In that tab, go to the Environment section
+  - Check the box "Use custom variables"
+  - Add a variable PYTHONPATH and as the value add the `path` where your modules are located (same as `project_folder` from requirement 1)
+  - Restart QGIS
