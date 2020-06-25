@@ -1,10 +1,7 @@
 import gdal
 import os
 
-# write here your path to the tifs folder
-tif_fold = os.path.join('databases','raster')
-
-def SingleTifToStacked(tif_fold):
+def single_tif_to_stacked(tif_fold):
     '''
     this function takes a list of single band tifs and transform them into:
     - first, a stacked .vrt
@@ -35,6 +32,3 @@ def SingleTifToStacked(tif_fold):
     outtif = gdal.Translate(outtif_fold, outvrt)
     
     return print ('.vrt and .tif created', outvrt, outtif) 
-    
-# uncomment below to run the function
-# SingleTifToStacked(tif_fold) 
