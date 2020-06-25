@@ -1,7 +1,7 @@
 import os
 import gdal 
 
-# place here your path to the multiband raster
+# place here your path to the multiband raster that you created with 'SingleTifs_to_StackedTif.py' script
 # try with both stacked.vrt and stacked.tif !
 path = os.path.join('Database','raster','stacked.vrt')
 
