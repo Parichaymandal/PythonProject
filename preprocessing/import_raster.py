@@ -42,6 +42,3 @@ def get_raster_info(rlayer):
 
     rast_spatial_ref = rlayer.GetProjection()
     print('Raster spatial ref is', rast_spatial_ref)
-
-
-

@@ -4,8 +4,6 @@
 
 import numpy as np
 
-# Function to carry out the analysis
-
 def repeated_measures_oneway_anova(y, x, i):
     """Function to compute repeated measures one-way ANOVA for a variably y 
     with groups x, in which each individual i is measures several times."""

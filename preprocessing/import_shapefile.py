@@ -34,5 +34,3 @@ def import_shp(path,geometry):
             
             else:
                 return(layerShp)
-
-# WWU - PIGis - SS2020
