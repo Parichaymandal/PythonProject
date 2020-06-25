@@ -2,7 +2,6 @@ import pandas
 import numpy as np
 from osgeo import gdal, ogr
 
-
 def latLon_to_XY(raster, lon, lat):
     '''
         Parameters:
@@ -94,22 +93,11 @@ def getTemperature(path, x, y, dateTime, type = 'point'):
         print('Could not open raster file')
     
     # Obtain point value
-    point_value = []
-    for idx in range(raster.RasterCount):
-        band = raster.GetRasterBand(idx+1)
-        intval = band.ReadAsArray(y,x,1,1)
-        point_value.append(intval[0,0])
-        
-    point_value = np.array(point_value)
-    index = dateTimeStringToIndex(dateTime)
-    
+    index = dateTimeStringToIndex(dateTime)    
     band = raster.GetRasterBand(index)
-    intval = band.ReadAsArray(y,x,1,1)
-    
-    #print(point_value)
-    print(intval[0,0])
-    
-    return point_value[index-1]
+    temp = band.ReadAsArray(y,x,1,1)[0,0]
+
+    return temp
 
 # Usage
 '''
