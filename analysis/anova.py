@@ -6,8 +6,25 @@ import numpy as np
 from scipy.stats import f
 
 def repeated_measures_oneway_anova(y, x, i):
-    """Function to compute repeated measures one-way ANOVA for a variably y 
-    with groups x, in which each individual i is measures several times."""
+    """Function to compute repeated measures one-way ANOVA for a variable y 
+    with groups x, in which each individual i is measured several times.
+    
+    Parameters
+        ----------
+        y : numpy.ndarray
+            1-dimensional numpy array with outcome measurements
+        x : numpy.ndarray
+            1-dimensional numpy array with group indentifiers
+        i : numpy.ndarray
+            1-dimensional numpy array with individual indentifiers
+
+        Returns
+        -------
+        F: numpy.float64
+            F test statistic
+        pval: numpy.float64
+            P-value of the test
+    """
     
     # Running message
     print('Computing repeated measures anova analysis:')
