@@ -24,7 +24,7 @@ def get_month_band_temperature(layerShp,rlayer):
     if caps & QgsVectorDataProvider.AddAttributes:
         res1=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
         res2=layerShp.dataProvider().addAttributes([QgsField("raster",QVariant.String)])
-        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.String)])
+        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.Int)])
         
     id=0
     yearValue=[]
@@ -62,7 +62,7 @@ def get_month_band_temperature(layerShp,rlayer):
         
         x=long[i]
         y=lat[i]
-        temp=str(get_temperature(rlayer,band_num,x,y,type='geo'))
+        temp = int(get_temperature(rlayer,band_num,x,y,type='geo'))
         temperatures.append(temp)
         rasterband.append(band_num)
         time_encode.append(encode)
