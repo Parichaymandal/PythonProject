@@ -3,10 +3,14 @@
 ##############################################################################
 
 import numpy as np
+from scipy.stats import f
 
 def repeated_measures_oneway_anova(y, x, i):
     """Function to compute repeated measures one-way ANOVA for a variably y 
     with groups x, in which each individual i is measures several times."""
+    
+    # Running message
+    print('Computing repeated measures anova analysis:')
     
     # Data checks: numpy array
     if type(y) != np.ndarray or type(x) != np.ndarray or type(i) != np.ndarray:
@@ -19,7 +23,7 @@ def repeated_measures_oneway_anova(y, x, i):
     # Total sum of squares (SST)
     mean_all = np.mean(y)
     SST = np.sum((y-mean_all)**2)
-    print('SST: '+ str(SST))
+    print('SST: '+ str(round(SST,2)))
     
     # Between sum of squares (SSB)
     mean_x = []
@@ -28,7 +32,7 @@ def repeated_measures_oneway_anova(y, x, i):
         tmp = y[np.where(x == s)]
         mean_x.append(np.mean(tmp))
     SSB = np.sum(n_i * ((mean_x-mean_all)**2))
-    print('SSB: '+ str(SSB))
+    print('SSB: '+ str(round(SSB, 2)))
         
     # Within sum of squares (SSW)
     mean_w = {}
@@ -39,7 +43,7 @@ def repeated_measures_oneway_anova(y, x, i):
     for u in range(y.shape[0]):
         ss_w.append((y[u] - mean_w[x[u]])**2)
     SSW = np.sum(ss_w)    
-    print('SSW: '+ str(SSW))
+    print('SSW: '+ str(round(SSW, 2)))
         
     # Subject sum of squares (SSS)
     mean_i = []
@@ -48,18 +52,23 @@ def repeated_measures_oneway_anova(y, x, i):
         tmp = y[np.where(i == v)]
         mean_i.append(np.mean(tmp))
     SSS = np.sum(n_x * ((mean_i-mean_all)**2))
-    print('SSS: '+ str(SSS))
+    print('SSS: '+ str(round(SSS, 2)))
     
     # Error variability (SSE)
     SSE = SSW - SSS 
-    print('SSR: '+ str(SSE))
+    print('SSR: '+ str(round(SSE, 2)))
         
     # F statistic
-    MSB = SSB/(n_x-1)
-    MSE  = SSE/((n_x-1)*(n_i-1))
+    df1 = n_x-1
+    MSB = SSB/df1
+    df2 = (n_x-1)*(n_i-1)
+    MSE  = SSE/df2
     F = MSB/MSE
-    print('F: ' + str(F))
+    print('F: ' + str(round(F, 2)))
     
-    # Contrast (F distribution)
+    # Compute p-value (F distribution)
+    pval = 1-f.cdf(F, df1, df2)
+    print('p-value: '+ str(round(pval, 4)))
     
     # Return results
+    return F, pval

@@ -12,7 +12,7 @@ from preprocessing.import_raster import *
 #The code only works if the project folder path is defined#
 #Modify the example below #
 
-project_folder=os.path.join('/Users','PythonProject')
+ project_folder=os.path.join('/Users','PythonProject')
 
 ##########################################################
 
@@ -38,7 +38,7 @@ temp_raster=import_raster(raster_tif_path)
 
 get_month_band_temperature(shp_points,temp_raster)
 
-##### ANOVA ANALYSIS #####
+##### Statistical analysis #####
 
 # Create fake month indicators for testing
 tot_animals = 4
@@ -54,4 +54,4 @@ ind = np.array(ind).flatten()
 temp = np.random.normal(size = len (month))
 
 # Check function
-repeated_measures_oneway_anova(temp, month, ind)
+F, pval = repeated_measures_oneway_anova(temp, month, ind)
