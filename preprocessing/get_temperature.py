@@ -13,7 +13,7 @@ def get_month_band_temperature(layerShp,rlayer):
     i = 0
     for field in fields:
         fieldname = field.name()
-        if fieldname in ["time_str", "raster", "TEMP"]:
+        if fieldname in ["time_str", "raster", "TEMP", "month"]:
             index_remove.append(i)
         i += 1
     if caps:
@@ -25,6 +25,7 @@ def get_month_band_temperature(layerShp,rlayer):
         res1=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
         res2=layerShp.dataProvider().addAttributes([QgsField("raster",QVariant.String)])
         res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.Int)])
+        res4=layerShp.dataProvider().addAttributes([QgsField("month",QVariant.Int)])
         
     id=0
     yearValue=[]
@@ -78,9 +79,13 @@ def get_month_band_temperature(layerShp,rlayer):
             attrs_temperature={15:temperatures[i]}
             dict_temperature={i:attrs_temperature}
             
+            attrs_month={16:int(monthValue[i])}
+            dict_month={i:attrs_month}
+            
             layerShp.dataProvider().changeAttributeValues(dict_time)
             layerShp.dataProvider().changeAttributeValues(dict_band)
             layerShp.dataProvider().changeAttributeValues(dict_temperature)
+            layerShp.dataProvider().changeAttributeValues(dict_month)
             
         layerShp.updateFields()
 
