@@ -7,8 +7,22 @@ def get_month_band_temperature(layerShp,rlayer):
     
     caps=layerShp.dataProvider().capabilities()
     
+    # Check if the analysis columns are already in the file, if yes delete
+    fields = layerShp.dataProvider().fields()
+    index_remove = []
+    i = 0
+    for field in fields:
+        fieldname = field.name()
+        if fieldname in ["time_str", "raster", "TEMP"]:
+            index_remove.append(i)
+        i += 1
+    if caps:
+        if len(index_remove)>0:
+            res = layerShp.dataProvider().deleteAttributes(index_remove)
+    
+    # Add new columns to the shapefile
     if caps & QgsVectorDataProvider.AddAttributes:
-        res=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
+        res1=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
         res2=layerShp.dataProvider().addAttributes([QgsField("raster",QVariant.String)])
         res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.String)])
         
