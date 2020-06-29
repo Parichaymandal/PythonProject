@@ -7,10 +7,25 @@ def get_month_band_temperature(layerShp,rlayer):
     
     caps=layerShp.dataProvider().capabilities()
     
+    # Check if the analysis columns are already in the file, if yes delete
+    fields = layerShp.dataProvider().fields()
+    index_remove = []
+    i = 0
+    for field in fields:
+        fieldname = field.name()
+        if fieldname in ["time_str", "raster", "TEMP", "month"]:
+            index_remove.append(i)
+        i += 1
+    if caps:
+        if len(index_remove)>0:
+            res = layerShp.dataProvider().deleteAttributes(index_remove)
+    
+    # Add new columns to the shapefile
     if caps & QgsVectorDataProvider.AddAttributes:
-        res=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
+        res1=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
         res2=layerShp.dataProvider().addAttributes([QgsField("raster",QVariant.String)])
-        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.String)])
+        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.Int)])
+        res4=layerShp.dataProvider().addAttributes([QgsField("month",QVariant.Int)])
         
     id=0
     yearValue=[]
@@ -48,7 +63,7 @@ def get_month_band_temperature(layerShp,rlayer):
         
         x=long[i]
         y=lat[i]
-        temp=str(get_temperature(rlayer,band_num,x,y,type='geo'))
+        temp = int(get_temperature(rlayer,band_num,x,y,type='geo'))
         temperatures.append(temp)
         rasterband.append(band_num)
         time_encode.append(encode)
@@ -64,9 +79,13 @@ def get_month_band_temperature(layerShp,rlayer):
             attrs_temperature={15:temperatures[i]}
             dict_temperature={i:attrs_temperature}
             
+            attrs_month={16:int(monthValue[i])}
+            dict_month={i:attrs_month}
+            
             layerShp.dataProvider().changeAttributeValues(dict_time)
             layerShp.dataProvider().changeAttributeValues(dict_band)
             layerShp.dataProvider().changeAttributeValues(dict_temperature)
+            layerShp.dataProvider().changeAttributeValues(dict_month)
             
         layerShp.updateFields()
 
