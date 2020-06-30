@@ -4,6 +4,7 @@ from qgis.core import *
 from qgis.PyQt.QtCore import QVariant
 
 def get_month_band_temperature(layerShp,rlayer):
+    '''HERE WE NEED A FUNCTION DESCRIPTION'''
     
     caps=layerShp.dataProvider().capabilities()
     
@@ -133,12 +134,6 @@ def get_temperature(rlayer,band_num,x,y,type='point'):
     # Obtain point value
    
     band = rlayer.GetRasterBand(band_num)
-    info = band.ReadAsArray(x,y,1,1)
-
-    if info is None:
-        temp=0
-    else:
-        temp = info[0,0]
-        if temp<0:
-            temp=0
+    temp = band.ReadAsArray(x,y,1,1)  
+    
     return temp
