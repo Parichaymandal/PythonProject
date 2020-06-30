@@ -28,7 +28,7 @@ def extract_arrays(layer, excludeNone):
         years: numpy.ndarray (integer)
             year of the measurement            
         temps: numpy.ndarray (integer)
-            temperature (Kelvin) of the measurement
+            temperature (Celsius) of the measurement
     
     '''
     # Extract data
@@ -64,6 +64,6 @@ def extract_arrays(layer, excludeNone):
     ids = np.asarray(ids)
     months = np.asarray(months)
     years = np.asarray(years)
-    temps = np.asarray(temps)
+    temps = np.asarray(temps) - 273.15 # To celsius
     
     return x, y, ids, months, years, temps
