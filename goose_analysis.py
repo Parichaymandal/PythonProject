@@ -13,10 +13,7 @@ from preprocessing.get_arrays import *
 
 #The code only works if the project folder path is defined#
 #Modify the example below #
-project_folder=os.path.join('/Users','PythonProject')
-project_folder=os.path.join('C:\\', 'Users', 'carle', 'Documents','GEOTECH',
-                          'IFGI', 'PIG',  'courseproject', 'PythonProject')
-                          
+project_folder=os.path.join('/Users','PythonProject')                          
                           
 ####################### PREPROCESSING #########################
 
@@ -38,8 +35,8 @@ temp_raster=import_raster(raster_tif_path)
 get_month_band_temperature(shp_points,temp_raster)
 
 #### Extract arrays for analysis ####
-x, y, ids, months, years, temps = extract_arrays(shp_points, excludeNone = True)
-
+x, y, ids, months, years, temps_k = extract_arrays(shp_points, excludeNone = True)
+temps_c = temps_k - 273.15
 
 ####################### ANALYSIS #########################
 
