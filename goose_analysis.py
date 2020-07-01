@@ -8,6 +8,7 @@ from preprocessing.import_shapefile import *
 from preprocessing.get_temperature import *
 from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
+from postprocessing.heatmap import *
 
 ##################### IMPORTANT ##########################
 
@@ -59,3 +60,7 @@ F, pval = repeated_measures_oneway_anova(temp, month, ind)
 
 
 ####################### POST-PROCESSING #########################
+
+# Dynamic heatmap
+figpath = os.path.join(project_folder,'figures','monthly_heatmap.png')
+monthly_heatmap(x, y, months, 5, 25, figpath)
