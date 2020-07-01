@@ -2,6 +2,7 @@ import numpy as np
 from osgeo import gdal, ogr
 from qgis.core import *
 from qgis.PyQt.QtCore import QVariant
+from datetime import datetime
 
 def extract_arrays(layer, excludeNone):
     '''Function to extract numpy arrays from a QgsVectorLayer for analysis
@@ -34,6 +35,7 @@ def extract_arrays(layer, excludeNone):
     # Extract data
     x = []
     y = []
+    timestamps=[]
     ids = []
     months = []
     years = []
@@ -45,6 +47,7 @@ def extract_arrays(layer, excludeNone):
             if feat['TEMP']:
                 x.append(feat['long'])
                 y.append(feat['lat'])
+                timestamps.append(datetime.strptime(feat['timestamp'],"%Y-%m-%d %H:%M:%S"))
                 ids.append(int(feat['ind_ident']))
                 months.append(feat['month'])
                 years.append(int(feat['time_str'][3:7]))
@@ -53,17 +56,21 @@ def extract_arrays(layer, excludeNone):
         else:
             x.append(feat['long'])
             y.append(feat['lat'])
+            timestamps.append(datetime.strptime(feat['timestamp'],"%Y-%m-%d %H:%M:%S"))
             ids.append(feat['ind_ident'])
             months.append(feat['month'])
             years.append(int(feat['time_str'][3:7]))
             temps.append(feat['TEMP'])
-            
+
+    print(timestamps)
+    
     # Convert to array
     x = np.asarray(x)
     y = np.asarray(y)
+    timestamps=np.asarray(timestamps)
     ids = np.asarray(ids)
     months = np.asarray(months)
     years = np.asarray(years)
     temps = np.asarray(temps) - 273.15 # To celsius
     
-    return x, y, ids, months, years, temps
+    return x, y, ids, months, years, temps, timestamps
