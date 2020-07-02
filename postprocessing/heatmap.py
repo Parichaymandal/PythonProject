@@ -89,6 +89,7 @@ def monthly_heatmap(x, y, month, grid_size, h, path):
         axes[rowplot,colplot].set_title("Month: " + str(m))
     
     # Add general labels, show and write to disk
+    fig.suptitle('Monthly heatmap', fontsize=16)
     fig.text(0.5, 0.06, 'longitude', ha='center')
     fig.text(0.09, 0.5, 'latitude', va='center', rotation='vertical')
     fig.show()
