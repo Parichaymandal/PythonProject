@@ -1,6 +1,67 @@
 import numpy as np
 from scipy.stats import f
 
+def seasonal_individual_averages(y, x, i):
+    """Function that computes grouped averages of y by factors x (month) and i
+    (individual identifier). x are considered to be months and are grouped 
+    according to meteorological seasons (Northern Hemisphere)
+    
+    Parameters
+        ----------
+        y : numpy.ndarray
+            1-dimensional numpy array with outcome measurements
+        x : numpy.ndarray
+            1-dimensional numpy array with month indentifiers
+        i : numpy.ndarray
+            1-dimensional numpy array with individual indentifiers
+
+        Returns
+        -------
+        y_avg : numpy.ndarray
+            outcome averages by season and identifier
+        x_avg : numpy.ndarray
+            season identifiers
+        i_avg : numpy.ndarray
+            individual identifiers
+            
+    """
+    y_avg = []
+    x_avg = []
+    i_avg = []
+    
+    # Loop through all unique values for x and i
+    for xi in ['winter', 'spring', 'summer', 'autumn']:
+        for ii in np.unique(i):
+            y_mean = []
+            # Loop through all elements of the array
+            for k in range(len(y)):
+                if xi == 'winter':
+                    if x[k] in [12,1,2] and i[k] == ii:
+                        y_mean.append(y[k])
+                elif xi == 'spring':
+                    if x[k] in [3,4,5] and i[k] == ii:
+                        y_mean.append(y[k])
+                elif xi == 'summer':
+                    if x[k] in [6,7,8] and i[k] == ii:
+                        y_mean.append(y[k])
+                elif xi == 'autumn':
+                    if x[k] in [9,10,11] and i[k] == ii:
+                        y_mean.append(y[k])
+            # Calculate mean
+            y_mean = np.mean(y_mean)
+            # And store results
+            y_avg.append(y_mean)
+            x_avg.append(xi)
+            i_avg.append(ii)
+    
+    # Convert to array and return results
+    y_avg = np.array(y_avg)
+    x_avg = np.array(x_avg)
+    i_avg = np.array(i_avg)
+    
+    return y_avg, x_avg, i_avg
+    
+
 def repeated_measures_oneway_anova(y, x, i):
     """Function to compute repeated measures one-way ANOVA for a variable y 
     with groups x, in which each individual i is measured several times.
@@ -23,7 +84,7 @@ def repeated_measures_oneway_anova(y, x, i):
     """
     
     # Running message
-    print('Computing repeated measures anova analysis:')
+    print('Computing repeated measures anova analysis...')
     
     # Data checks: numpy array
     if type(y) != np.ndarray or type(x) != np.ndarray or type(i) != np.ndarray:
@@ -85,3 +146,6 @@ def repeated_measures_oneway_anova(y, x, i):
     
     # Return results
     return F, pval
+
+def anova_plot(y, x, i, df1, df2):
+    pass
