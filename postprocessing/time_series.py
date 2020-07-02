@@ -30,14 +30,3 @@ def plot_timeseries(ids,timestamps,temps,file_path):
     plt.show()
 
     return(array_timeseries)
-
-# Test data
-
-bimonthly_days = np.arange(0, 60)
-base_date = np.datetime64('2017-01-01 00:00:00')
-timestamps = base_date + bimonthly_days
-
-temps = np.random.rand(60,)*40-20
-ids=np.repeat((1,2,3,4,5,6),10)
-
-plot_timeseries(ids,timestamps,temps,'test_timeseries_geese.png')

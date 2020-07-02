@@ -61,8 +61,6 @@ def extract_arrays(layer, excludeNone):
             months.append(feat['month'])
             years.append(int(feat['time_str'][3:7]))
             temps.append(feat['TEMP'])
-
-    print(timestamps)
     
     # Convert to array
     x = np.asarray(x)
