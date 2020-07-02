@@ -46,9 +46,9 @@ x, y, ids, months, years, temps,timestamps = extract_arrays(shp_points, excludeN
 ####################### ANALYSIS #########################
 
 ##### Statistical analysis #####
-figpath = os.path.join(project_folder,'figures','anova.png')
+anova_path = os.path.join(project_folder,'figures','anova.png')
 temps_avg, seasons_avg, ids_avg = seasonal_individual_averages(temps, months, ids)
-F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, figpath)
+F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, anova_path)
 
 
 ####################### POST-PROCESSING #########################
@@ -60,5 +60,5 @@ plot_timeseries(ids,timestamps,temps,timeseries_path)
 
 
 # Dynamic heatmap
-figpath = os.path.join(figures_folder,'monthly_heatmap.png')
-monthly_heatmap(x, y, months, 5, 25, figpath)
+heatmap_path = os.path.join(figures_folder,'monthly_heatmap.png')
+monthly_heatmap(x, y, months, 5, 25, heatmap_path)
