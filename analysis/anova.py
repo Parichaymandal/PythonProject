@@ -176,21 +176,22 @@ def anova_plot(y, x, i, df1, df2, F, path):
     # 1st plot: Assumptions
     axes[0].hist(y, bins = 'auto')
     axes[0].set_title('ANOVA assumptions:\nNormality and outliers')
+    axes[0].set_ylabel('Frequency')
+    axes[0].set_xlabel('Seasonal mean temperature')
     # 2nd plot: Boxplots
     yplot = []
-    xplot = [] 
-    for xi in np.unique(x):
+    xplot = ['winter', 'spring', 'summer', 'autumn']
+    for xi in xplot:
         ysub = []
         for k in range(len(y)):
             if x[k] == xi:
                 ysub.append(y[k])
-        xplot.append(xi)
         yplot.append(ysub)
     
     axes[1].boxplot(yplot)
     axes[1].set_xticklabels(xplot)
-    axes[1].boxplot(yplot)
     axes[1].set_title('ANOVA exploration:\nSeasonal boxplots')
+    axes[1].set_ylabel('Seasonal mean temperature')
     # 3th plot: Result
     # Derive pdf of the F distribution
     x_dist = np.linspace(f.ppf(0.01, df1, df2),
@@ -205,7 +206,8 @@ def anova_plot(y, x, i, df1, df2, F, path):
     axes[2].axvline(x = F, label='Observed statistic', c = 'blue')
     axes[2].axvline(x = crit, label='Critical value', c = 'red')
     axes[2].set_title('ANOVA test results:\nStatistic and critical value')    
-    
+    axes[2].set_ylabel('Probability')
+    axes[2].set_xlabel('F value')
     plt.legend()
     fig.show()
     plt.savefig(path)

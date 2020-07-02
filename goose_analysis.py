@@ -15,8 +15,6 @@ from postprocessing.heatmap import *
 #The code only works if the project folder path is defined#
 #Modify the example below #
 project_folder=os.path.join('/Users','PythonProject')
-project_folder=os.path.join('C:\\', 'Users', 'carle', 'Documents','GEOTECH',
-                            'IFGI', 'PIG',  'courseproject', 'PythonProject')
                           
 ####################### PREPROCESSING #########################
 
