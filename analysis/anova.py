@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.stats import f
+from matplotlib import pyplot as plt
 
 def seasonal_individual_averages(y, x, i):
     """Function that computes grouped averages of y by factors x (month) and i
@@ -62,7 +63,7 @@ def seasonal_individual_averages(y, x, i):
     return y_avg, x_avg, i_avg
     
 
-def repeated_measures_oneway_anova(y, x, i):
+def repeated_measures_oneway_anova(y, x, i, path):
     """Function to compute repeated measures one-way ANOVA for a variable y 
     with groups x, in which each individual i is measured several times.
     
@@ -144,8 +145,67 @@ def repeated_measures_oneway_anova(y, x, i):
     pval = 1-f.cdf(F, df1, df2)
     print('p-value: '+ str(round(pval, 4)))
     
+    # Call plot function
+    anova_plot(y, x, i, df1, df2, F, path)
+    
     # Return results
     return F, pval
 
-def anova_plot(y, x, i, df1, df2):
-    pass
+def anova_plot(y, x, i, df1, df2, F, path):
+    """Function to do a plot of the ANOVA results
+    
+    Parameters
+        ----------
+        y : numpy.ndarray
+            1-dimensional numpy array with outcome measurements
+        x : numpy.ndarray
+            1-dimensional numpy array with group indentifiers
+        i : numpy.ndarray
+            1-dimensional numpy array with individual indentifiers
+        df1: integer
+            degrees of freedom of the numerator
+        df2: integer
+            degrees of freedom of the denominator
+        F: float
+            test statistic
+        path: string
+            path to write figure to disk
+    """
+    # ANOVA plot
+    fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+    # 1st plot: Assumptions
+    axes[0].hist(y, bins = 'auto')
+    axes[0].set_title('ANOVA assumptions:\nNormality and outliers')
+    # 2nd plot: Boxplots
+    yplot = []
+    xplot = [] 
+    for xi in np.unique(x):
+        ysub = []
+        for k in range(len(y)):
+            if x[k] == xi:
+                ysub.append(y[k])
+        xplot.append(xi)
+        yplot.append(ysub)
+    
+    axes[1].boxplot(yplot)
+    axes[1].set_xticklabels(xplot)
+    axes[1].boxplot(yplot)
+    axes[1].set_title('ANOVA exploration:\nSeasonal boxplots')
+    # 3th plot: Result
+    # Derive pdf of the F distribution
+    x_dist = np.linspace(f.ppf(0.01, df1, df2),
+                         f.ppf(0.99, df1, df2), 100)
+    rv = f(df1, df2)
+    # Find critical value for distribution
+    x_vals = rv.pdf(x_dist)
+    crit = min(abs(x_vals-0.05))
+    crit = x_dist[np.min(np.where(abs(x_vals-0.05)==crit))]
+    # Plot
+    axes[2].plot(x_dist, x_vals, 'k-', lw=2, label='Test F distribution')
+    axes[2].axvline(x = F, label='Observed statistic', c = 'blue')
+    axes[2].axvline(x = crit, label='Critical value', c = 'red')
+    axes[2].set_title('ANOVA test results:\nStatistic and critical value')    
+    
+    plt.legend()
+    fig.show()
+    plt.savefig(path)

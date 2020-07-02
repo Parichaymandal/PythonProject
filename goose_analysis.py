@@ -43,8 +43,9 @@ x, y, ids, months, years, temps = extract_arrays(shp_points, excludeNone = True)
 ####################### ANALYSIS #########################
 
 ##### Statistical analysis #####
+figpath = os.path.join(project_folder,'figures','anova.png')
 temps_avg, seasons_avg, ids_avg = seasonal_individual_averages(temps, months, ids)
-F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg)
+F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, figpath)
 
 
 ####################### POST-PROCESSING #########################
