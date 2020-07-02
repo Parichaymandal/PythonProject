@@ -205,7 +205,7 @@ def anova_plot(y, x, i, df1, df2, F, path):
     axes[2].plot(x_dist, x_vals, 'k-', lw=2, label='Test F distribution')
     axes[2].axvline(x = F, label='Observed statistic', c = 'blue')
     axes[2].axvline(x = crit, label='Critical value', c = 'red')
-    axes[2].set_title('ANOVA test results:\nStatistic and critical value')    
+    axes[2].set_title('ANOVA test results: Statistic \n and critical value (5% confidence)')    
     axes[2].set_ylabel('Probability')
     axes[2].set_xlabel('F value')
     plt.legend()
