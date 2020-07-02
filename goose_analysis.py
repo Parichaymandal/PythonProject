@@ -46,22 +46,9 @@ x, y, ids, months, years, temps,timestamps = extract_arrays(shp_points, excludeN
 ####################### ANALYSIS #########################
 
 ##### Statistical analysis #####
-
-# Create fake month indicators for testing
-tot_animals = 4
-tot_months = 6
-np.random.seed(seed = 1234)
-month = np.repeat(np.arange(1,tot_months+1,1), tot_animals)
-
-# Create fake individual indicators for testing
-ind = []
-for i in range(1,tot_months+1):
-    ind.append(list(range(1, tot_animals+1)))
-ind = np.array(ind).flatten()
-temp = np.random.normal(size = len (month))
-
-# Check function
-F, pval = repeated_measures_oneway_anova(temp, month, ind)
+figpath = os.path.join(project_folder,'figures','anova.png')
+temps_avg, seasons_avg, ids_avg = seasonal_individual_averages(temps, months, ids)
+F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, figpath)
 
 
 ####################### POST-PROCESSING #########################

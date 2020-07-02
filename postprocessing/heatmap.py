@@ -85,12 +85,14 @@ def monthly_heatmap(x, y, month, grid_size, h, path):
         intensity = np.array(intensity_list)
         rowplot = math.ceil(m/4)-1
         colplot = (m-1)%4
-        
         axes[rowplot,colplot].pcolormesh(x_mesh, y_mesh, intensity)
         axes[rowplot,colplot].set_title("Month: " + str(m))
     
+    # Add general labels, show and write to disk
+    fig.suptitle('Monthly heatmap', fontsize=16)
     fig.text(0.5, 0.06, 'longitude', ha='center')
     fig.text(0.09, 0.5, 'latitude', va='center', rotation='vertical')
+    fig.show()
     plt.savefig(path)
     
     print("Heatmap successfully exported!")
