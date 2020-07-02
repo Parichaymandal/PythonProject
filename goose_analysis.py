@@ -10,6 +10,8 @@ from preprocessing.get_temperature import *
 from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
 from postprocessing.time_series import *
+from postprocessing.heatmap import *
+
 
 ##################### IMPORTANT ##########################
 
@@ -23,7 +25,7 @@ project_folder=os.path.join('/Users','sebastiangarzon','Desktop','PythonProject'
 raster_folder = os.path.join(project_folder,'databases','raster')
 shp_folder=os.path.join(project_folder,'databases','shapefiles')
 raster_tif_path=os.path.join(raster_folder,'stacked.tif')
-figure_folder=os.path.join(project_folder,'figures')
+figures_folder=os.path.join(project_folder,'figures')
 
 #### Stack rasters ####
 single_tif_to_stacked(raster_folder)
@@ -64,6 +66,12 @@ F, pval = repeated_measures_oneway_anova(temp, month, ind)
 
 ####################### POST-PROCESSING #########################
 
+
 # Timeseries plot
-timeseries_path=os.path.join(figure_folder,'timeseries_geese.png')
+timeseries_path=os.path.join(figures_folder,'timeseries_geese.png')
 plot_timeseries(ids,timestamps,temps,timeseries_path)
+
+
+# Dynamic heatmap
+figpath = os.path.join(figures_folder,'monthly_heatmap.png')
+monthly_heatmap(x, y, months, 5, 25, figpath)
