@@ -5,6 +5,23 @@ import numpy as np
 
 
 def monthly_distribution(sample_year, months, years, temps, monthly_path):
+    '''
+    Function to compute the monthly temperature distribution
+    
+    Parameters
+        ----------
+        sample_year: year of your choice (integer)
+            it is either 2007 or 2008
+        months : numpy.ndarray (integer)
+            1-dimensional numpy array with month identifiers
+        temps: numpy.ndarray (integer)
+            temperature (Celsius) of the measurement
+        years: numpy.ndarray (integer)
+            year of the measurement
+        monthly_path: string
+            path where to export the distribution in .html
+    '''
+    
     unique_months = np.unique(months)
     names = ['Jan. {y}'.format(y = sample_year),'Feb. {y}'.format(y = sample_year),
             'Mar. {y}'.format(y = sample_year), 'Apr. {y}'.format(y = sample_year), 
@@ -23,4 +40,4 @@ def monthly_distribution(sample_year, months, years, temps, monthly_path):
     pyo.plot(fig, filename=monthly_path)
  
 # uncomment to test this function 
-# monthly_distribution(2007, months, years, temps, os.path.join('C:\\','Users','Giulia','Desktop','PythonProject','joyplot.html')) 
+# monthly_distribution(2007, months, years, temps, os.path.join('monthly_path')) 
