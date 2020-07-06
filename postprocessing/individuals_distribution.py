@@ -5,6 +5,20 @@ import numpy as np
 
 
 def individuals_distribution(ids, temps, ind_path):
+   
+    '''
+    Function to compute the distribution in temperature of each bird
+    
+    Parameters
+        ----------
+        ids: numpy.ndarray (integer)
+            bird identifiers
+        temps: numpy.ndarray (integer)
+            temperature (Celsius) of the measurement
+        ind_path: string
+            path where to export the distribution in .html
+    '''
+
     unique_ids = np.unique(ids)
     names = ["Goose 72364", "Goose 72413", "Goose 72417", "Goose 73053",
             "Goose 73054", "Goose 79694", "Goose 79698"]                
@@ -20,5 +34,5 @@ def individuals_distribution(ids, temps, ind_path):
     pyo.plot(fig, filename=ind_path)
   
 # uncomment to test this function  
-# individuals_distribution(ids, temps, os.path.join('C:\\','Users','Giulia','Desktop','PythonProject','distribution_individuals.html')) 
+# individuals_distribution(ids, temps, os.path.join('ind_path')) 
 
