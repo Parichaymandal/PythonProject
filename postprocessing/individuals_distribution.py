@@ -22,7 +22,7 @@ def individuals_distribution(ids, temps, ind_path):
     unique_ids = np.unique(ids)
     names = ["Goose 72364", "Goose 72413", "Goose 72417", "Goose 73053",
             "Goose 73054", "Goose 79694", "Goose 79698"]                
-    colors = n_colors('rgb(85, 116, 0)', 'rgb(85, 116, 0)', 7, colortype='rgb')    
+    colors = n_colors('rgb(150, 150, 150)', 'rgb(150, 150, 150)', 7, colortype='rgb')    
     fig = go.Figure()
     for goose, color,name in zip(unique_ids, colors, names):
         fig.add_trace(go.Violin(x=temps[ids == goose], line=dict(color=color),
