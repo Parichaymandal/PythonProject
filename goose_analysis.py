@@ -11,7 +11,8 @@ from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
 from postprocessing.time_series import *
 from postprocessing.heatmap import *
-
+from postprocessing.monthly_distribution import *
+from postprocessing.individuals_distribution import *
 
 ##################### IMPORTANT ##########################
 
@@ -62,3 +63,18 @@ plot_timeseries(ids,timestamps,temps,timeseries_path)
 # Dynamic heatmap
 heatmap_path = os.path.join(figures_folder,'monthly_heatmap.png')
 monthly_heatmap(x, y, months, 5, 25, heatmap_path)
+
+
+# monthly-distribution joyplot 2007
+monthly_path = os.path.join(figures_folder,'monthly_distribution_2007.html')
+monthly_distribution(2007, months, years, temps, monthly_path)
+
+
+# monthly-distribution joyplot 2008 
+monthly_path = os.path.join(figures_folder,'monthly_distribution_2008.html')
+monthly_distribution(2008, months, years, temps, monthly_path)
+
+
+# individuals-distribution joyplot 
+ind_path = os.path.join(figures_folder,'individuals_distribution.html')
+individuals_distribution(ids, temps, ind_path)
