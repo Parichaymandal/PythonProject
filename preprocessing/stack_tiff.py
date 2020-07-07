@@ -30,5 +30,3 @@ def single_tif_to_stacked(tif_fold):
     outtif_fold = os.path.join (tif_fold, 'stacked.tif')
     # converts vrt into tif
     outtif = gdal.Translate(outtif_fold, outvrt)
-    
-    return print ('.vrt and .tif created', outvrt, outtif) 
