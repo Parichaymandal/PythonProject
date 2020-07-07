@@ -9,12 +9,13 @@ from preprocessing.import_shapefile import *
 from preprocessing.get_temperature import *
 from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
-from postprocessing.time_series import *
-from postprocessing.heatmap import *
 from analysis.get_table import *
-
+from postprocessing.time_series import *
+from postprocessing.rasterplot import *
+from postprocessing.heatmap import *
 from postprocessing.monthly_distribution import *
 from postprocessing.individuals_distribution import *
+
 
 ##################### IMPORTANT ##########################
 
@@ -22,6 +23,7 @@ from postprocessing.individuals_distribution import *
 #Modify the example below #
 
 project_folder=os.path.join('/Users','PythonProject')
+
                           
 ####################### PREPROCESSING #########################
 
@@ -58,13 +60,16 @@ F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, anova_
 table_path = os.path.join(figures_folder,'month_individual_table.png')
 plot_table(ids, years, months, temps, table_path)
 
+
 ####################### POST-PROCESSING #########################
 
+# Raster temperature maps
+rastermap_path=os.path.join(figures_folder,'temperature_rastermap.png')
+plot_temp_rasters(temp_raster, -30, 30, rastermap_path)
 
 # Timeseries plot
 timeseries_path=os.path.join(figures_folder,'timeseries_geese.png')
 plot_timeseries(ids,timestamps,temps,timeseries_path)
-
 
 # Dynamic heatmap
 heatmap_path = os.path.join(figures_folder,'monthly_heatmap.png')
@@ -74,14 +79,10 @@ monthly_heatmap(x, y, months, 5, 25, heatmap_path)
 monthly_path = os.path.join(figures_folder,'monthly_distribution_2007.html')
 monthly_distribution(2007, months, years, temps, monthly_path)
 
-
 # monthly-distribution joyplot 2008 
 monthly_path = os.path.join(figures_folder,'monthly_distribution_2008.html')
 monthly_distribution(2008, months, years, temps, monthly_path)
 
-
 # individuals-distribution joyplot 
 ind_path = os.path.join(figures_folder,'individuals_distribution.html')
 individuals_distribution(ids, temps, ind_path)
-
-
