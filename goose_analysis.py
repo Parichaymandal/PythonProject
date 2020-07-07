@@ -21,9 +21,7 @@ from postprocessing.individuals_distribution import *
 #The code only works if the project folder path is defined#
 #Modify the example below #
 
-project_folder=os.path.join('/Users','parichay','Desktop','Desktop','Academic','Semester2','PIG','PythonProject')
-
-#project_folder=os.path.join('/Users','PythonProject')
+project_folder=os.path.join('/Users','PythonProject')
                           
 ####################### PREPROCESSING #########################
 
@@ -56,6 +54,9 @@ anova_path = os.path.join(project_folder,'figures','anova.png')
 temps_avg, seasons_avg, ids_avg = seasonal_individual_averages(temps, months, ids)
 F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, anova_path)
 
+# month/individual table
+table_path = os.path.join(figures_folder,'month_individual_table.png')
+plot_table(ids, years, months, temps, table_path)
 
 ####################### POST-PROCESSING #########################
 
@@ -83,7 +84,4 @@ monthly_distribution(2008, months, years, temps, monthly_path)
 ind_path = os.path.join(figures_folder,'individuals_distribution.html')
 individuals_distribution(ids, temps, ind_path)
 
-# month/individual table
-table_path = os.path.join(figures_folder,'month_individual_table.png')
-plot_table(ids, years, months, temps, table_path)
 
