@@ -11,13 +11,14 @@ from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
 from postprocessing.time_series import *
 from postprocessing.heatmap import *
+from analysis.get_table import *
 
 
 ##################### IMPORTANT ##########################
 
 #The code only works if the project folder path is defined#
 #Modify the example below #
-project_folder=os.path.join('/Users','sebastiangarzon','Desktop','PythonProject')
+project_folder=os.path.join('/Users','parichay','Desktop','Desktop','Academic','Semester2','PIG','PythonProject')
                           
 ####################### PREPROCESSING #########################
 
@@ -62,3 +63,6 @@ plot_timeseries(ids,timestamps,temps,timeseries_path)
 # Dynamic heatmap
 heatmap_path = os.path.join(figures_folder,'monthly_heatmap.png')
 monthly_heatmap(x, y, months, 5, 25, heatmap_path)
+
+table_path = os.path.join(figures_folder,'month_individual_table.png')
+plot_table(ids, years, months, temps, table_path)
