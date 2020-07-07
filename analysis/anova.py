@@ -194,8 +194,8 @@ def anova_plot(y, x, i, df1, df2, F, path):
     axes[1].set_ylabel('Seasonal mean temperature')
     # 3th plot: Result
     # Derive pdf of the F distribution
-    x_dist = np.linspace(f.ppf(0.01, df1, df2),
-                         f.ppf(0.99, df1, df2), 100)
+    x_dist = np.linspace(f.ppf(0.0001, df1, df2),
+                         f.ppf(0.9999, df1, df2), 1000)
     rv = f(df1, df2)
     # Find critical value for distribution
     x_vals = rv.pdf(x_dist)
