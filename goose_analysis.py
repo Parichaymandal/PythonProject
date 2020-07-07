@@ -13,12 +13,17 @@ from postprocessing.time_series import *
 from postprocessing.heatmap import *
 from analysis.get_table import *
 
+from postprocessing.monthly_distribution import *
+from postprocessing.individuals_distribution import *
 
 ##################### IMPORTANT ##########################
 
 #The code only works if the project folder path is defined#
 #Modify the example below #
+
 project_folder=os.path.join('/Users','parichay','Desktop','Desktop','Academic','Semester2','PIG','PythonProject')
+
+#project_folder=os.path.join('/Users','PythonProject')
                           
 ####################### PREPROCESSING #########################
 
@@ -64,5 +69,21 @@ plot_timeseries(ids,timestamps,temps,timeseries_path)
 heatmap_path = os.path.join(figures_folder,'monthly_heatmap.png')
 monthly_heatmap(x, y, months, 5, 25, heatmap_path)
 
+# monthly-distribution joyplot 2007
+monthly_path = os.path.join(figures_folder,'monthly_distribution_2007.html')
+monthly_distribution(2007, months, years, temps, monthly_path)
+
+
+# monthly-distribution joyplot 2008 
+monthly_path = os.path.join(figures_folder,'monthly_distribution_2008.html')
+monthly_distribution(2008, months, years, temps, monthly_path)
+
+
+# individuals-distribution joyplot 
+ind_path = os.path.join(figures_folder,'individuals_distribution.html')
+individuals_distribution(ids, temps, ind_path)
+
+# month/individual table
 table_path = os.path.join(figures_folder,'month_individual_table.png')
 plot_table(ids, years, months, temps, table_path)
+
