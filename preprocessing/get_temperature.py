@@ -57,10 +57,10 @@ def get_month_band_temperature(layerShp,rlayer):
         year=yearValue[i]
         month=monthDict[monthValue[i]]
         encode=month+year
-        multiplier=1
+        new_year=0
         if year=="2008":
-            multiplier=2
-        band_num=int(monthValue[i])*multiplier
+            new_year=12
+        band_num=int(monthValue[i])+new_year
         
         x=long[i]
         y=lat[i]
