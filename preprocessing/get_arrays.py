@@ -28,7 +28,7 @@ def extract_arrays(layer, excludeNone):
             month of the year of the measurement
         years: numpy.ndarray (integer)
             year of the measurement            
-        temps: numpy.ndarray (integer)
+        temps: numpy.ndarray (double)
             temperature (Celsius) of the measurement
     
     '''
