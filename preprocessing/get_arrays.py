@@ -44,7 +44,7 @@ def extract_arrays(layer, excludeNone):
     for feat in features:
         # If we are asked to ignore records with NULL temperature
         if excludeNone:
-            if feat['TEMP']:
+            if feat['TEMP']>0:
                 x.append(feat['long'])
                 y.append(feat['lat'])
                 timestamps.append(datetime.strptime(feat['timestamp'],"%Y-%m-%d %H:%M:%S"))
@@ -60,7 +60,7 @@ def extract_arrays(layer, excludeNone):
             ids.append(feat['ind_ident'])
             months.append(feat['month'])
             years.append(int(feat['time_str'][3:7]))
-            temps.append(feat['TEMP'])
+            temps.append(feat['Temp']>0)
     
     # Convert to array
     x = np.asarray(x)
