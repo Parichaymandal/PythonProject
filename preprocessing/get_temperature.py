@@ -4,7 +4,20 @@ from qgis.core import *
 from qgis.PyQt.QtCore import QVariant
 
 def get_month_band_temperature(layerShp,rlayer):
-    '''HERE WE NEED A FUNCTION DESCRIPTION'''
+   '''
+        Parameters:
+        ____________
+            rlayer: GDAL raster object
+            layerShp: OGR shapefile
+            
+        Returns:
+        ____________
+            Update layerShp by adding 4 new QgsFields: 'time_str', 'raster', 'TEMP' and 'month'
+                                                        'time_str': month-year string
+                                                        'raster': Raster band number corresponding to month-year
+                                                        'TEMP' : Temperature in Kelvin
+                                                        'month': Month of the year
+    '''
     
     caps=layerShp.dataProvider().capabilities()
     
