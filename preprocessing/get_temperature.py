@@ -18,9 +18,8 @@ def get_month_band_temperature(layerShp,rlayer):
                                                         'TEMP' : Temperature in Kelvin
                                                         'month': Month of the year
     '''
-    
     caps=layerShp.dataProvider().capabilities()
-    
+      
     # Check if the analysis columns are already in the file, if yes delete
     fields = layerShp.dataProvider().fields()
     index_remove = []
