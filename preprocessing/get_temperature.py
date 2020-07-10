@@ -4,10 +4,22 @@ from qgis.core import *
 from qgis.PyQt.QtCore import QVariant
 
 def get_month_band_temperature(layerShp,rlayer):
-    '''HERE WE NEED A FUNCTION DESCRIPTION'''
-    
+   '''
+        Parameters:
+        ____________
+            rlayer: GDAL raster object
+            layerShp: OGR shapefile
+            
+        Returns:
+        ____________
+            Update layerShp by adding 4 new QgsFields: 'time_str', 'raster', 'TEMP' and 'month'
+                                                        'time_str': month-year string
+                                                        'raster': Raster band number corresponding to month-year
+                                                        'TEMP' : Temperature in Kelvin
+                                                        'month': Month of the year
+    '''
     caps=layerShp.dataProvider().capabilities()
-    
+      
     # Check if the analysis columns are already in the file, if yes delete
     fields = layerShp.dataProvider().fields()
     index_remove = []
@@ -25,7 +37,7 @@ def get_month_band_temperature(layerShp,rlayer):
     if caps & QgsVectorDataProvider.AddAttributes:
         res1=layerShp.dataProvider().addAttributes([QgsField("time_str",QVariant.String)])
         res2=layerShp.dataProvider().addAttributes([QgsField("raster",QVariant.String)])
-        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.Int)])
+        res3=layerShp.dataProvider().addAttributes([QgsField("TEMP",QVariant.Double)])
         res4=layerShp.dataProvider().addAttributes([QgsField("month",QVariant.Int)])
         
     id=0
@@ -64,7 +76,7 @@ def get_month_band_temperature(layerShp,rlayer):
         
         x=long[i]
         y=lat[i]
-        temp = int(get_temperature(rlayer,band_num,x,y,type='geo'))
+        temp = float(get_temperature(rlayer,band_num,x,y,type='geo'))
         temperatures.append(temp)
         rasterband.append(band_num)
         time_encode.append(encode)
