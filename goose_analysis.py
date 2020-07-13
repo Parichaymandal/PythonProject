@@ -15,6 +15,7 @@ from postprocessing.rasterplot import *
 from postprocessing.heatmap import *
 from postprocessing.monthly_distribution import *
 from postprocessing.individuals_distribution import *
+from postprocessing.plot_trajectories import *
 
 
 ##################### IMPORTANT ##########################
@@ -86,3 +87,8 @@ monthly_distribution(2008, months, years, temps, monthly_path)
 # individuals-distribution joyplot 
 ind_path = os.path.join(figures_folder,'individuals_distribution.html')
 individuals_distribution(ids, temps, ind_path)
+
+# plot trajectories
+layer=import_shp(shp_folder,"lines")
+path = os.path.join(figures_folder,'bird_trajectories.png')
+plot_trajectories(layer, path )
