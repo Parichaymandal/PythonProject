@@ -41,7 +41,6 @@ Westfälische Wilhelms-Universität
 |`rasterplot.py`|Postprocessing|X||||
 |`timeseries.py`|Postprocessing|||X||
 
-**X** = Single main contributor 
-__X<sup>(*)</sup>__ = Main contributor
+**X** = Single main contributor  
+__X<sup>(*)</sup>__ = Main contributor  
 __X<sup>(**)</sup>__ = Secondary contributor
-
