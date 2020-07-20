@@ -5,10 +5,6 @@ import math
 # Heatmap algorithm adapted from:
 # https://www.geodose.com/2018/01/creating-heatmap-in-python-from-scratch.html
 
-#DEFINE GRID SIZE AND RADIUS(h)
-grid_size=1
-radius=10
-
 def monthly_heatmap(x, y, month, grid_size, h, path):
     """Function to compute a monthly heatmap""
     
