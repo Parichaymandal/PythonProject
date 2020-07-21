@@ -28,7 +28,7 @@ def individuals_distribution(ids, temps, ind_path):
         fig.add_trace(go.Violin(x=temps[ids == goose], line=dict(color=color),
                                 orientation = 'h', side='positive', points=False,
                                 name=name))
-    fig.layout.update(title='Distribution of Individual Temperatures ',
+    fig.layout.update(title='Distribution of Individual Temperatures, kernel density estimation plot',
                     xaxis=dict(title="Temperature (C°)") )
     
     pyo.plot(fig, filename=ind_path)
