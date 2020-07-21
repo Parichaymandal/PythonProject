@@ -35,7 +35,7 @@ def monthly_distribution(sample_year, months, years, temps, monthly_path):
         fig.add_trace(go.Violin(x=temps[((months== month)& (years== sample_year)).nonzero()[0]], line=dict(color=color),
                                 orientation = 'h', side='positive', points=False,
                                 name=name))
-    fig.layout.update(title='Distribution of Monthly Temperatures ({y}), kernel density estimation plot'.format(y = sample_year),
+    fig.layout.update(title='Distribution of Monthly Temperatures ({y}) (kernel density estimation plot)'.format(y = sample_year),
                    xaxis=dict(title="Temperature (C°)") )
     pyo.plot(fig, filename=monthly_path)
  
