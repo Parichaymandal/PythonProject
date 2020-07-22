@@ -6,7 +6,7 @@ Westfälische Wilhelms-Universität.
 # Manual for reproducibility
 
 1. Clone this repository
-2. Add `points.shp` and `lines.shp` of geese trajectories into `databases/shapefiles`. The GPS data used for this study must be requested to the authors on the [Movebank platform](https://www.datarepository.movebank.org/handle/10255/move.750). We are **not** authorized to distribute the dataset.
+2. Add `points.shp` and `lines.shp` of geese trajectories into `databases/shapefiles`. The GPS data used for this study must be requested from the authors on the [Movebank platform](https://www.datarepository.movebank.org/handle/10255/move.750). We are **not** authorized to distribute the dataset.
 3. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer
 4. Modify QGIS configuration for Python:
 - Go to Settings -> Options
