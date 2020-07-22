@@ -3,6 +3,10 @@
 Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020).  
 Westfälische Wilhelms-Universität. 
 
+# Description
+
+This repository contains the supplementary material required to reproduce the findings of the study *Spatio-temporal analysis of white-fronted geese temperature trajectories*.
+
 # Software requirements
 - Python 3
 - QGIS (any version)
