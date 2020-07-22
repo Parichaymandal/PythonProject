@@ -3,6 +3,10 @@
 Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020).  
 Westfälische Wilhelms-Universität. 
 
+# Software requirements
+- Python 3
+- QGIS (any version)
+
 # Manual for reproducibility
 
 1. Clone this repository
