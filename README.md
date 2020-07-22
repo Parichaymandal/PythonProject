@@ -1,27 +1,22 @@
 # Spatio-temporal analysis of white-fronted geese temperature trajectories
 
-Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020)
-Westfälische Wilhelms-Universität
+Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020).  
+Westfälische Wilhelms-Universität. 
 
-# Manual
+# Manual for reproducibility
 
-#to do
+1. Clone this repository
+2. Add `points.shp` and `lines.shp` of geese trajectories into `databases/shapefiles`. The GPS data used for this study must be requested to the authors on the [Movebank platform](https://www.datarepository.movebank.org/handle/10255/move.750). We are **not** authorized to distribute the dataset.
+3. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer
+4. Modify QGIS configuration for Python:
+- Go to Settings -> Options
+- In the window that appears, go to the tab *System*
+- In that tab, go to the *Environment* section
+- Check the box `Use custom variables`
+- Add a variable `PYTHONPATH` and as the value add the `path` where your modules are located (same as `project_folder` from step 3)
+- Restart QGIS
+5. RUN `goose_analysis.py` script by using the QGIS - Python IDLE. After running the script figures of this study are going to be available in the `figures` folder.
 
-# Requirements
-
-1. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer.
-
-2. Run this code by using the QGIS python-IDE.
-
-3. This project use python modules and QGIS so it is requiered an additional configuration:
-
-  - In QGIS, go to Settings -> Options
-  - In the window that appears, go to the tab System
-  - In that tab, go to the Environment section
-  - Check the box "Use custom variables"
-  - Add a variable `PYTHONPATH` and as the value add the `path` where your modules are located (same as `project_folder` from requirement 1)
-  - Restart QGIS
-  
   # Individual contributions
   
 | Script name |  Section|  Carles | Giulia   | Sebastian | Parichay |
