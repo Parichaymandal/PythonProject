@@ -26,21 +26,20 @@ Westfälische Wilhelms-Universität
   
 | Script name |  Section|  Carles | Giulia   | Sebastian | Parichay |
 |:-------------:|:---------:|:---------:|:----------:|:---------:|:---------:|
-|`goose_analysis.py`|Main|X<sup>(**)</sup>|X<sup>(**)</sup>|X<sup>(*)</sup>|X<sup>(**)</sup>|
-|`stack_tiff.py`|Preprocessing|||X||
-|`import_raster.py`|Preprocessing||X<sup>(*)</sup>|X<sup>(**)</sup>||
-|`import_shapefile.py`|Preprocessing|||X||
-|`get_temperature.py`|Preprocessing|||X<sup>(**)</sup>|X<sup>(*)</sup>|
-|`get_arrays.py`|Preprocessing|X<sup>(*)</sup>||X<sup>(**)</sup>||
-|`anova.py`|Analysis|X||||
-|`get_table.py`|Analysis||||X|
-|`heatmap.py`|Postprocessing|X||||
-|`individual_distributions.py`|Postprocessing||X|||
-|`monthly_distributions.py`|Postprocessing||X|||
-|`plot_trajectories.py`|Postprocessing||||X|
-|`rasterplot.py`|Postprocessing|X||||
-|`timeseries.py`|Postprocessing|||X||
+|`goose_analysis.py`|Main|S|S|M|S|
+|`stack_tiff.py`|Preprocessing|||M||
+|`import_raster.py`|Preprocessing||M|S||
+|`import_shapefile.py`|Preprocessing|||M||
+|`get_temperature.py`|Preprocessing|||S|M|
+|`get_arrays.py`|Preprocessing|M||S||
+|`anova.py`|Analysis|M||||
+|`get_table.py`|Analysis||||M|
+|`heatmap.py`|Postprocessing|M||||
+|`individual_distributions.py`|Postprocessing||M|||
+|`monthly_distributions.py`|Postprocessing||M|||
+|`plot_trajectories.py`|Postprocessing||||M|
+|`rasterplot.py`|Postprocessing|M||||
+|`timeseries.py`|Postprocessing|||M||
 
-**X** = Single main contributor  
-__X<sup>(*)</sup>__ = Main contributor  
-__X<sup>(**)</sup>__ = Secondary contributor
+**M** = Main contributor  
+__S__ = Secondary contributor 
