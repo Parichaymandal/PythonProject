@@ -1,46 +1,48 @@
 # Spatio-temporal analysis of white-fronted geese temperature trajectories
 
-Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020)
-Westfälische Wilhelms-Universität
+Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020).  
+Westfälische Wilhelms-Universität. 
 
-# Manual
+# Description
 
-#to do
+This repository contains the supplementary material required to reproduce the findings of the study *Spatio-temporal analysis of white-fronted geese temperature trajectories*.
 
-# Requirements
+# Software requirements
+- Python 3
+- QGIS (any version)
 
-1. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer.
+# Manual for reproducibility
 
-2. Run this code by using the QGIS python-IDE.
+1. Clone this repository
+2. Add `points.shp` and `lines.shp` of geese trajectories into `databases/shapefiles`. The GPS data used for this study must be requested from the authors on the [Movebank platform](https://www.datarepository.movebank.org/handle/10255/move.750). We are **not** authorized to distribute the dataset.
+3. In file `goose_analysis.py` modify `project_folder` variable to the current location of this folder on your computer
+4. Modify QGIS configuration for Python:
+- Go to Settings -> Options
+- In the window that appears, go to the tab *System*
+- In that tab, go to the *Environment* section
+- Check the box `Use custom variables`
+- Add a variable `PYTHONPATH` and as the value add the `path` where your modules are located (same as `project_folder` from step 3)
+- Restart QGIS
+5. RUN `goose_analysis.py` script by using the QGIS - Python IDLE. After running the script figures of this study are going to be available in the `figures` folder.
 
-3. This project use python modules and QGIS so it is requiered an additional configuration:
-
-  - In QGIS, go to Settings -> Options
-  - In the window that appears, go to the tab System
-  - In that tab, go to the Environment section
-  - Check the box "Use custom variables"
-  - Add a variable `PYTHONPATH` and as the value add the `path` where your modules are located (same as `project_folder` from requirement 1)
-  - Restart QGIS
-  
   # Individual contributions
   
 | Script name |  Section|  Carles | Giulia   | Sebastian | Parichay |
 |:-------------:|:---------:|:---------:|:----------:|:---------:|:---------:|
-|`goose_analysis.py`|Main|X<sup>(**)</sup>|X<sup>(**)</sup>|X<sup>(*)</sup>|X<sup>(**)</sup>|
-|`stack_tiff.py`|Preprocessing|||X||
-|`import_raster.py`|Preprocessing||X<sup>(*)</sup>|X<sup>(**)</sup>||
-|`import_shapefile.py`|Preprocessing|||X||
-|`get_temperature.py`|Preprocessing|||X<sup>(**)</sup>|X<sup>(*)</sup>|
-|`get_arrays.py`|Preprocessing|X<sup>(*)</sup>||X<sup>(**)</sup>||
-|`anova.py`|Analysis|X||||
-|`get_table.py`|Analysis||||X|
-|`heatmap.py`|Postprocessing|X||||
-|`individual_distributions.py`|Postprocessing||X|||
-|`monthly_distributions.py`|Postprocessing||X|||
-|`plot_trajectories.py`|Postprocessing||||X|
-|`rasterplot.py`|Postprocessing|X||||
-|`timeseries.py`|Postprocessing|||X||
+|`goose_analysis.py`|Main|*S*|*S*|**M**|*S*|
+|`stack_tiff.py`|Preprocessing|||**M**||
+|`import_raster.py`|Preprocessing||**M**|*S*||
+|`import_shapefile.py`|Preprocessing|||**M**||
+|`get_temperature.py`|Preprocessing|||*S*|**M**|
+|`get_arrays.py`|Preprocessing|**M**||*S*||
+|`anova.py`|Analysis|**M**||||
+|`get_table.py`|Analysis||||**M**|
+|`heatmap.py`|Postprocessing|**M**||||
+|`individual_distributions.py`|Postprocessing||**M**|||
+|`monthly_distributions.py`|Postprocessing||**M**|||
+|`plot_trajectories.py`|Postprocessing||||**M**|
+|`rasterplot.py`|Postprocessing|**M**||||
+|`timeseries.py`|Postprocessing|||**M**||
 
-**X** = Single main contributor  
-__X<sup>(*)</sup>__ = Main contributor  
-__X<sup>(**)</sup>__ = Secondary contributor
+**M** = Main contributor  
+*S* = Secondary contributor 
