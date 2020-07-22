@@ -180,6 +180,7 @@ def anova_plot(y, x, i, df1, df2, F, path):
     axes[0].set_xlabel('Seasonal mean temperature')
     # 2nd plot: Boxplots
     yplot = []
+    temp_mean = []
     xplot = ['winter', 'spring', 'summer', 'autumn']
     for xi in xplot:
         ysub = []
@@ -187,9 +188,12 @@ def anova_plot(y, x, i, df1, df2, F, path):
             if x[k] == xi:
                 ysub.append(y[k])
         yplot.append(ysub)
-    
+        temp_mean.append(sum(ysub)/len(ysub))
+        
     axes[1].boxplot(yplot)
+    axes[1].scatter([1,2,3,4], temp_mean)
     axes[1].set_xticklabels(xplot)
+    plt.legend()
     axes[1].set_title('ANOVA exploration:\nSeasonal boxplots')
     axes[1].set_ylabel('Seasonal mean temperature')
     # 3th plot: Result
