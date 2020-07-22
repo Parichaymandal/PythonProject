@@ -193,7 +193,6 @@ def anova_plot(y, x, i, df1, df2, F, path):
     axes[1].boxplot(yplot)
     axes[1].scatter([1,2,3,4], temp_mean)
     axes[1].set_xticklabels(xplot)
-    plt.legend()
     axes[1].set_title('ANOVA exploration:\nSeasonal boxplots')
     axes[1].set_ylabel('Seasonal mean temperature')
     # 3th plot: Result
