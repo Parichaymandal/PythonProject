@@ -30,7 +30,7 @@ This repository contains the supplementary material required to reproduce the fi
 | Script name |  Section|  Carles | Giulia   | Sebastian | Parichay |
 |:-------------:|:---------:|:---------:|:----------:|:---------:|:---------:|
 |`goose_analysis.py`|Main|*S*|*S*|**M**|*S*|
-|`stack_tiff.py`|Preprocessing|||**M**||
+|`stack_tiff.py`|Preprocessing||**M**|||
 |`import_raster.py`|Preprocessing||**M**|*S*||
 |`import_shapefile.py`|Preprocessing|||**M**||
 |`get_temperature.py`|Preprocessing|||*S*|**M**|
