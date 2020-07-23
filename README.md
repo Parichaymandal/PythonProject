@@ -31,7 +31,7 @@ This repository contains the supplementary material required to reproduce the fi
 |:-------------:|:---------:|:---------:|:----------:|:---------:|:---------:|
 |`goose_analysis.py`|Main|*S*|*S*|**M**|*S*|
 |`stack_tiff.py`|Preprocessing||**M**|||
-|`import_raster.py`|Preprocessing||**M**|*S*||
+|`import_raster.py`|Preprocessing||**S**|**M**||
 |`import_shapefile.py`|Preprocessing|||**M**||
 |`get_temperature.py`|Preprocessing|||*S*|**M**|
 |`get_arrays.py`|Preprocessing|**M**||*S*||
