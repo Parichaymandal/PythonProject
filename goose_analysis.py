@@ -61,6 +61,10 @@ F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, anova_
 table_path = os.path.join(figures_folder,'Tab1_month_individual_table.png')
 plot_table(ids, years, months, temps, table_path)
 
+# Temperature summary for all geese
+table_path = os.path.join(figures_folder,'Tab2_individual_summary_table.png')
+get_sum(ids, years, temps,table_path)
+
 
 ####################### POST-PROCESSING #########################
 
@@ -92,7 +96,3 @@ monthly_distribution(2008, months, years, temps, monthly_path)
 # Dynamic heatmap
 heatmap_path = os.path.join(figures_folder,'Fig6_monthly_heatmap.png')
 monthly_heatmap(x, y, months, 5, 25, heatmap_path)
-
-# Temperature summary for all geese
-table_path = os.path.join(figures_folder,'Tab2_individual_summary_table.png')
-get_sum(ids, years, temps,table_path)
