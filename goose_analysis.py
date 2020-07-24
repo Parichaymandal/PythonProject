@@ -57,13 +57,13 @@ anova_path = os.path.join(project_folder,'figures','Fig7_anova.png')
 temps_avg, seasons_avg, ids_avg = seasonal_individual_averages(temps, months, ids)
 F, pval = repeated_measures_oneway_anova(temps_avg, seasons_avg, ids_avg, anova_path)
 
-# month/individual table
-table_path = os.path.join(figures_folder,'Tab1_month_individual_table.png')
-plot_table(ids, years, months, temps, table_path)
-
 # Temperature summary for all geese
-table_path = os.path.join(figures_folder,'Tab2_individual_summary_table.png')
+table_path = os.path.join(figures_folder,'Tab1_individual_summary_table.png')
 get_sum(ids, years, temps,table_path)
+
+# month/individual table
+table_path = os.path.join(figures_folder,'Tab2_month_individual_table.png')
+plot_table(ids, years, months, temps, table_path)
 
 
 ####################### POST-PROCESSING #########################
