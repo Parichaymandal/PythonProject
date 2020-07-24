@@ -9,6 +9,7 @@ from preprocessing.import_shapefile import *
 from preprocessing.get_temperature import *
 from preprocessing.import_raster import *
 from preprocessing.get_arrays import *
+from analysis.get_summary import *
 from analysis.get_table import *
 from postprocessing.time_series import *
 from postprocessing.rasterplot import *
@@ -16,7 +17,6 @@ from postprocessing.heatmap import *
 from postprocessing.monthly_distribution import *
 from postprocessing.individuals_distribution import *
 from postprocessing.plot_trajectories import *
-from postprocessing.get_summary import *
 
 
 ##################### IMPORTANT ##########################
