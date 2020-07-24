@@ -7,5 +7,5 @@ In this folder the following output files are saved:
 - Fig 5.2. Monthly temperature distribution (2008)  - Interactive plot
 - Fig 6. Monthly heatmap of locations
 - Fig 7. ANOVA results
-- Tab 1. Monthly individual mean temperature table (not included in the final version of the manuscript)
-- Tab 2. Minimum, maximum and mean temperature value per Geese (Table 1 in the final version of the manuscript)
+- Tab 1. Minimum, maximum and mean temperature value per Geese 
+- Tab 2. Monthly individual mean temperature table (not included in the final version of the manuscript)
