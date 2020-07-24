@@ -1,4 +1,4 @@
-# Spatio-temporal analysis of white-fronted geese temperature trajectories
+# Different place... same temperature? Spatio-temporal analysis of white-fronted geese temperature trajectories
 
 Carles Milà, Giulia Molisse, Sebastián Garzón, Parichay Mandal (2020).  
 Westfälische Wilhelms-Universität. 
@@ -9,7 +9,7 @@ This repository contains the supplementary material required to reproduce the fi
 
 # Software requirements
 - Python 3
-- QGIS (any version)
+- QGIS (3.x any version)
 
 # Manual for reproducibility
 
