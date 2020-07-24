@@ -1,10 +1,11 @@
-In this folder are save the output files:
-- Fig 1. Trajectory map
-- Fig 2. Temperature raster 
-- Fig 3. Temperature time series
+In this folder the following output files are saved:
+- Fig 1. Trajectory map of the individual tracks
+- Fig 2. Monthly temperature raster maps
+- Fig 3. Temperature time series by individual
 - Fig 4. Individuals temperature distribution     - Interactive plot
-- Fig 5. Monthly temperature distribution (2007)  - Interactive plot
-- Fig 5. Monthly temperature distribution (2008)  - Interactive plot
-- Fig 6. Monthly heatmap
-- Fig 7. ANOVA 
-- Monthly individual mean temperature table
+- Fig 5.1. Monthly temperature distribution (2007)  - Interactive plot
+- Fig 5.2. Monthly temperature distribution (2008)  - Interactive plot
+- Fig 6. Monthly heatmap of locations
+- Fig 7. ANOVA results
+- Tab 1. Monthly individual mean temperature table (not included in the final version of the manuscript)
+- Tab 2. Minimum, maximum and mean temperature value per Geese (Table 1 in the final version of the manuscript)
