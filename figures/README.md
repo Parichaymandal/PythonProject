@@ -1,4 +1,4 @@
-In this folder are saved the output files:
+In this folder are save the output files:
 - Fig 1. Trajectory map
 - Fig 2. Temperature raster 
 - Fig 3. Temperature time series
