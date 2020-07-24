@@ -37,7 +37,7 @@ This repository contains the supplementary material required to reproduce the fi
 |`get_arrays.py`|Preprocessing|**M**||*S*||
 |`anova.py`|Analysis|**M**||||
 |`get_table.py`|Analysis||||**M**|
-|`get_summary.py`|Postprocessing||||**M**|
+|`get_summary.py`|Analysis||||**M**|
 |`heatmap.py`|Postprocessing|**M**||||
 |`individual_distributions.py`|Postprocessing||**M**|||
 |`monthly_distributions.py`|Postprocessing||**M**|||
